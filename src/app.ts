@@ -14,15 +14,25 @@ import { root } from './route/root';
 import { isInteger } from './route/utils';
 import { logger } from './route/logger';
 import { AppDataSource } from "./route/data-source";
-
+import { Controller } from "./route/routing";
+import path from 'path';
 
 const app = express();
 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '..','dist', 'views'));
+app.use(express.static(path.join(__dirname, '..', 'dist', 'public')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+app.use(express.static(path.join(__dirname, 'dist', 'modules')));
 
 const setupExpress = () => {
   
     app.route("/").get(root);
+    app.route("/login").get(Controller);
+    app.route("/register").get(Controller);
    
     
     }
