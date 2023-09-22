@@ -8,6 +8,7 @@ if(result.error) {
 } 
 console.log(process.env.PORT);
 
+import "reflect-metadata";
 import express from 'express';
 import { root } from './route/root';
 import { isInteger } from './route/utils';
