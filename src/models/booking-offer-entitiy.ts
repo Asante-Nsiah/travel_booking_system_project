@@ -20,15 +20,12 @@ import { CartItem } from './cart-item-entity';
     // Add other common fields here
   
     @OneToMany(() => CartItem, (cartItem) => cartItem.offer)
-    cartItems: CartItem[];
+    cartItems!: CartItem[];
 
     constructor(){
         this.offerID = 0;
         this.category = new Category();
         this.businessUser = new Users();
         this.name = '';
-        this.cartItems = [];
-        
-   
     }
   }

@@ -7,15 +7,18 @@ export class GuestCart {
   @PrimaryGeneratedColumn()
   cartID: number;
 
-  @OneToOne(() => Users)
-  @JoinColumn()
+  // @OneToOne(() => Users, { nullable: true })
+  // @JoinColumn()
   user!: Users;
 
-  @OneToMany(() => CartItem, (cartItem) => cartItem.cart)
-  cartItems: CartItem[];
 
-  constructor(){
+  @OneToMany(() => CartItem, (cartItem) => cartItem.cart)
+  cartItems!: CartItem[];
+
+  constructor(user?: Users) {
     this.cartID = 0;
-    this.cartItems = [];
+    if (user) {
+      this.user = user;
+    }
   }
 }

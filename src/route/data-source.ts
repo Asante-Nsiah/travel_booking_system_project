@@ -1,4 +1,12 @@
 import {DataSource} from "typeorm";
+import { Users } from "../models/users-entity";
+import { SavedCard } from "../models/saved-card-entity";
+import { GuestCart } from "../models/guest-entity";
+import { Category } from "../models/category-entity";
+import { CartItem } from "../models/cart-item-entity";
+import { BookingOffer } from "../models/booking-offer-entitiy";
+import { Transaction } from "../models/transaction.entity";
+import path from "path";
 
 
 
@@ -16,10 +24,17 @@ export const AppDataSource = new DataSource({
         }
     },
     entities: [
-        // path.join(__dirname, "./user-entity/Users.js"),
-        "./user-entity/Users.js",
+        path.join(__dirname, "./users-entity/Users.js"),
+        "./users-entity/Users.js",
         "src/modules/**/*.js",
-    
+        Users,
+        Transaction,
+        SavedCard,
+        GuestCart,
+        Category,
+        CartItem,
+        BookingOffer,
+
     ],
     synchronize:true,
     logging:true

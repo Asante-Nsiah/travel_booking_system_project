@@ -1,8 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, OneToOne, JoinColumn,} from 'typeorm';
-  import { BookingOffer } from './booking-offer-entitiy';
-  import { GuestCart } from './guest-entity';
-  import { SavedCard } from './saved-card-entity';
-  import { Transaction } from './transaction.entity';
+import { Transaction } from './transaction.entity';
+import { BookingOffer } from './booking-offer-entitiy';
+import { GuestCart } from './guest-entity';
+import { SavedCard } from './saved-card-entity';
   
   @Entity('users')
   export class Users {
@@ -29,20 +29,21 @@ import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, OneToOne, 
   
     @Column({ type: 'varchar', length: 255, nullable: true })
     FacebookAuthID: string | null;
+
+    @Column({ type: 'varchar', length: 255, nullable: true })
+    verificationToken: string | null;
   
     @OneToMany(() => BookingOffer, (bookingOffer) => bookingOffer.businessUser)
-    bookingOffers: BookingOffer[];
+    bookingOffers!: BookingOffer[];
   
     @OneToMany(() => SavedCard, (savedCard) => savedCard.User)
-    savedCards: SavedCard[];
+    savedCards!: SavedCard[];
   
     @OneToMany(() => Transaction, (transaction) => transaction.User)
-    transactions: Transaction[];
+    transactions!: Transaction[];
   
-    @OneToOne(() => GuestCart)
-  @JoinColumn()
-  GuestCart: GuestCart;
-
+    @OneToOne(() => GuestCart, (guestCart) => guestCart.user, { cascade: true })
+    GuestCart: GuestCart;
 
     constructor() {
         this.userID = 0; 
@@ -53,9 +54,7 @@ import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, OneToOne, 
         this.IsEmailVerified = false;
         this.GoogleAuthID = null;
         this.FacebookAuthID = null;
-        this.bookingOffers = [];
-        this.savedCards = [];
-        this.transactions = [];
+        this.verificationToken = null;
         this.GuestCart = new GuestCart();
       }
   }

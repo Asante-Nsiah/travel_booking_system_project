@@ -33,6 +33,7 @@ const setupExpress = () => {
     app.route("/").get(root);
     app.route("/login").get(Controller);
     app.route("/register").get(Controller);
+    app.route("/register").post(Controller);
    
     
     }

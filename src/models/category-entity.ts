@@ -19,7 +19,7 @@ export class Category {
   icon: string;
 
   @OneToMany(() => BookingOffer, (bookingOffer) => bookingOffer.category)
-  bookingOffers: BookingOffer[];
+  bookingOffers!: BookingOffer[];
 
   constructor(){
     this.categoryID = 0;
@@ -27,6 +27,6 @@ export class Category {
     this.description = '';
     this.code = '';
     this.icon = '';
-    this.bookingOffers = [];
+    // this.bookingOffers = [];
   }
 }
