@@ -2,10 +2,8 @@ import { Request, Response, NextFunction} from "express";
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import { Users } from "../models/users-entity";
-import { UserRepository } from "../repository/userRepository";
 import nodemailer from 'nodemailer';
 import { AppDataSource } from "../route/data-source";
-import { GuestCartRepository } from "../repository/guestRepository";
 import { getRepository } from "typeorm";
 import { GuestCart } from "../models/guest-entity";
 
@@ -86,12 +84,6 @@ export const registration =  async (request: Request, response: Response) => {
 
       await userRepository.insert(user);
 
-    //   const userCart = await findOrCreateCartForUser(user);
-    //   user.GuestCart = (userCart as unknown) as GuestCart;
-      
-
-     
-  
      
       // Send a verification email
       await sendVerificationEmail(fullName, email, verificationToken);
@@ -119,7 +111,9 @@ async function sendVerificationEmail(fullName: string,email: string, verificatio
       from: 'demoproject369@gmail.com',
       to: email,
       subject: 'Account Verification',
-      text: `Hello ${fullName}\nClick the following link to verify your account: http://localhost:3000/verify/${verificationToken}`,
+      text: `Hello ${fullName},\n
+      Thank you for registering on the Travel Booking System page.\n
+      Click the following link to verify your account: http://localhost:3000/verify/${verificationToken}`,
     };
   
     await transporter.sendMail(mailOptions);

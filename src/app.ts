@@ -34,6 +34,7 @@ const setupExpress = () => {
     app.route("/login").get(Controller);
     app.route("/register").get(Controller);
     app.route("/register").post(Controller);
+    app.route("/verify/:token").get(Controller);
    
     
     }

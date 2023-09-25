@@ -43,6 +43,7 @@ import { SavedCard } from './saved-card-entity';
     transactions!: Transaction[];
   
     @OneToOne(() => GuestCart, (guestCart) => guestCart.user, { cascade: true })
+    @JoinColumn()
     GuestCart: GuestCart;
 
     constructor() {
