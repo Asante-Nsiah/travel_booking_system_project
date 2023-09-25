@@ -34,21 +34,7 @@ function validatePassword(password: string): boolean {
     return uuidv4(); // Generate a random UUID
   }
   
-  async function findOrCreateCartForUser(user: Users): Promise<number> {
-    // Check if the user already has a cart associated with them
-    const guestRepository = connection.getRepository(GuestCart)
-    const existingCart = await guestRepository.findOne({ where: { user: { userID: user.userID } } });
-  
-    if (existingCart) {
-      // If the user already has a cart, return its cartID
-      return existingCart.cartID;
-    } else {
-      // If the user doesn't have a cart, create a new one and return its cartID
-      const newCart = guestRepository.create({ user });
-      await guestRepository.save(newCart);
-      return newCart.cartID;
-    }
-  }
+
 
 
 export const registration =  async (request: Request, response: Response) => {

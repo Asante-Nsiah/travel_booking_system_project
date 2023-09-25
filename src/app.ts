@@ -16,8 +16,28 @@ import { logger } from './route/logger';
 import { AppDataSource } from "./route/data-source";
 import { Controller } from "./route/routing";
 import path from 'path';
+import session from 'express-session';
+import passport from 'passport';
+import initializePassport from "./config/passportConfig";
+
+
 
 const app = express();
+
+app.use(session({ 
+  secret: process.env.SESSION_SECRET || 'defaultSecret', 
+  resave: false, 
+  saveUninitialized: true,
+  cookie: {
+    secure: false, // Set to true in production with HTTPS
+  },
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  
+  initializePassport(passport);
+  
 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
@@ -35,7 +55,9 @@ const setupExpress = () => {
     app.route("/register").get(Controller);
     app.route("/register").post(Controller);
     app.route("/verify/:token").get(Controller);
-   
+    app.route("/logout").post(Controller);
+    app.route("/login").post(Controller);
+    app.route("/main").get(Controller);
     
     }
 

@@ -24,6 +24,10 @@ export class UserRepository extends Repository<Users> {
     const user = await this.findOne({ where: {username} });
     return user || null; 
   }
+  async findById(userID: number): Promise<Users | null> {
+    const user = await this.findOne({ where: {userID} });
+    return user || null; 
+  }
   
   async findByVerificationToken(verificationToken: string): Promise<Users | null> {
     const user = await this.findOne({ where: { verificationToken } });
