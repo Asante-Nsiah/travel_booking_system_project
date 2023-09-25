@@ -44,7 +44,7 @@ import { SavedCard } from './saved-card-entity';
   
     @OneToOne(() => GuestCart, (guestCart) => guestCart.user, { cascade: true })
     @JoinColumn()
-    GuestCart: GuestCart;
+    GuestCart: GuestCart | null;;
 
     constructor() {
         this.userID = 0; 
@@ -56,6 +56,6 @@ import { SavedCard } from './saved-card-entity';
         this.GoogleAuthID = null;
         this.FacebookAuthID = null;
         this.verificationToken = null;
-        this.GuestCart = new GuestCart();
+        this.GuestCart = null;
       }
   }

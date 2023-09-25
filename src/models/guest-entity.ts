@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany, ManyToOne } from 'typeorm';
 import { Users } from './users-entity';
 import { CartItem } from './cart-item-entity';
 
@@ -7,8 +7,8 @@ export class GuestCart {
   @PrimaryGeneratedColumn()
   cartID: number;
 
-  // @OneToOne(() => Users, { nullable: true })
-  // @JoinColumn()
+  @ManyToOne(() => Users, (user) => user.GuestCart) 
+  @JoinColumn()
   user!: Users;
 
 
@@ -22,3 +22,6 @@ export class GuestCart {
     }
   }
 }
+
+ // @OneToOne(() => Users, { nullable: true })
+  // @JoinColumn()
