@@ -21,6 +21,15 @@ export  const register = (request: Request, response: Response) => {
         response.status(500).send('Internal Server Error');
     }
 };
+export  const resetPassword = (request: Request, response: Response) => {
+    try {
+        response.render("reset-password");
+    } catch (error) {
+        logger.error('Error rendering reset-password:', error);
+        response.status(500).send('Internal Server Error');
+    }
+};
+
 export  const logout = (request: Request, response: Response) => {
     try {
         request.session.destroy((err) => {
