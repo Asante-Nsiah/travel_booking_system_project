@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Category</title>
+    <link rel="stylesheet" href="/public/create-category.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Booking Category</h1>
+        <form action="/create-category" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="description">Short Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="code">Code:</label>
+            <input type="text" id="code" name="code" required>
+
+            <label for="icon" class="icon-label">
+                <img src="icon.png" alt="Category Icon" width="32" height="32">
+                Upload Icon:
+            </label>
+            <input type="file" id="icon" name="icon" accept="image/*" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="accommodation">Accommodation</option>
+                <option value="hotel">Hotel</option>
+                <option value="car_rental">Car Rental</option>
+                <option value="flight">Flight</option>
+            </select>
+
+            <button type="submit" class="submit-btn">Create Category</button>
+        </form>
+    </div>
+    
+</body>
+</html>

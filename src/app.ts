@@ -59,6 +59,7 @@ const setupExpress = () => {
     app.route("/login").post(Controller);
     app.route("/main").get(Controller);
     app.route("/reset-password").get(Controller);
+    app.route("/reset-password").post(Controller);
     
     }
 
