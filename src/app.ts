@@ -60,6 +60,7 @@ const setupExpress = () => {
     app.route("/main").get(Controller);
     app.route("/reset-password").get(Controller);
     app.route("/reset-password").post(Controller);
+    app.route("/create-category").get(Controller);
     
     }
 

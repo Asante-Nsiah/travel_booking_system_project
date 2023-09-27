@@ -4,6 +4,7 @@ import { registration } from '../controller/userRegistration';
 import { verification } from '../controller/userVerification';
 import { authenticateUser } from '../controller/authenticateUser';
 import { setNewPassword } from '../controller/resetPassword';
+import { category } from '../controller/category';
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.post('/login', authenticateUser)
 router.get('/main', isAuthenticated, mainPage )
 router.get('/reset-password', resetPassword)
 router.post('/reset-password', setNewPassword)
+router.get('/create-category', category)
 
 
 

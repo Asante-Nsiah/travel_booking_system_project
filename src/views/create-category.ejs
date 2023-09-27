@@ -8,8 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create Booking Category</h1>
-        <form action="/create-category" method="POST">
+        <h1>Create Booking Offer</h1>
+        <form action="/create-booking-offer" method="POST">
+            <label for="category">Select a Category:</label>
+            <select id="category" name="category" class="category-select" required>
+                <option value="accommodation">Accommodation</option>
+                <option value="hotel">Hotel</option>
+                <option value="flight">Flight</option>
+                <option value="car_rental">Car Rental</option>
+            </select>
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -19,23 +27,26 @@
             <label for="code">Code:</label>
             <input type="text" id="code" name="code" required>
 
-            <label for="icon" class="icon-label">
-                <img src="icon.png" alt="Category Icon" width="32" height="32">
-                Upload Icon:
-            </label>
-            <input type="file" id="icon" name="icon" accept="image/*" required>
+            <label for="icon">Icon:</label>
+            <input type="text" id="icon" name="icon" required>
 
-            <label for="category">Category:</label>
-            <select id="category" name="category" required>
-                <option value="accommodation">Accommodation</option>
-                <option value="hotel">Hotel</option>
-                <option value="car_rental">Car Rental</option>
-                <option value="flight">Flight</option>
-            </select>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
 
-            <button type="submit" class="submit-btn">Create Category</button>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+
+            <!-- Additional fields for each category can be added here -->
+
+            <div class="map-container">
+                <label for="map">Select Location on Map:</label>
+                <div id="map"></div>
+            </div>
+
+            <button type="submit" class="submit-button">Create Offer</button>
         </form>
     </div>
+
     
 </body>
 </html>
