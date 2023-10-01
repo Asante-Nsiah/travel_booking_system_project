@@ -61,6 +61,7 @@ const setupExpress = () => {
     app.route("/reset-password").get(Controller);
     app.route("/reset-password").post(Controller);
     app.route("/create-category").get(Controller);
+    app.route("/create-booking-offer").post(Controller);
     
     }
 

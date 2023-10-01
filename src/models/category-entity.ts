@@ -3,6 +3,9 @@ import { BookingOffer } from './booking-offer-entitiy';
 
 @Entity('categories')
 export class Category {
+  save() {
+      throw new Error('Method not implemented.');
+  }
   @PrimaryGeneratedColumn()
   categoryID: number;
 
@@ -10,13 +13,37 @@ export class Category {
   name: string;
 
   @Column({ type: 'text' })
-  description: string;
+  accommodationType: string;
+
+  @Column({ type: 'text' })
+  location: string;
+
+  @Column({ type: 'text' })
+  accommodationCapacity: string;
+
+  @Column({ type: 'text' })
+  price: number;
+
+  @Column({ type: 'text' })
+  roomType: string;
+
+  @Column({ type: 'text' })
+  cityOfDepature: string;
+
+  @Column({ type: 'text' })
+  cityOfDestination: string;
+
+  @Column({ type: 'text' })
+  date: Date;
+
+  @Column({ type: 'text' })
+  carType: string;
 
   @Column({ type: 'varchar', length: 50 })
   code: string;
 
   @Column({ type: 'varchar', length: 255 })
-  icon: string;
+  image: string;
 
   @OneToMany(() => BookingOffer, (bookingOffer) => bookingOffer.category)
   bookingOffers!: BookingOffer[];
@@ -24,9 +51,17 @@ export class Category {
   constructor(){
     this.categoryID = 0;
     this.name = '';
-    this.description = '';
+    this.location = '';
     this.code = '';
-    this.icon = '';
-    // this.bookingOffers = [];
+    this.image = '';
+    this.accommodationType = '';
+    this.accommodationCapacity = '';
+    this.roomType = '';
+    this.cityOfDepature = '';
+    this.cityOfDestination = '';
+    this.date = new Date();
+    this.carType = '';
+    this.price = 0;
+
   }
 }

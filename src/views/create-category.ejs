@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Category</title>
     <link rel="stylesheet" href="/public/create-category.css">
+   
 </head>
 <body>
     <div class="container">
@@ -18,35 +19,70 @@
                 <option value="car_rental">Car Rental</option>
             </select>
 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="description">Short Description:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-
             <label for="code">Code:</label>
-            <input type="text" id="code" name="code" required>
+            <input type="text" id="code" name="code">
 
-            <label for="icon">Icon:</label>
-            <input type="text" id="icon" name="icon" required>
-
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required>
-
-            <!-- Additional fields for each category can be added here -->
-
-            <div class="map-container">
-                <label for="map">Select Location on Map:</label>
-                <div id="map"></div>
+             <!-- Accommodation Fields -->
+             <p>Accommodation only</p>
+             <div id="accommodation-fields" >
+                <label for="accommodationType">Accommodation Type:</label>
+                <input type="text" id="accommodationType" name="accommodationType" placeholder="N/A">
+                
+                <label for="accommodationCapacity">Accommodation Capacity:</label>
+                <input type="text" id="accommodationCapacity" name="accommodationCapacity" placeholder="N/A">
             </div>
+
+            <!-- Hotel Fields -->
+            <p>Hotel only</p>
+            <div id="hotel-fields">
+                <label for="name">Name of Hotel:</label>
+                <input type="text" id="name" name="name" required placeholder="N/A">
+
+                <label for="roomType">Room Type:</label>
+                <input type="text" id="roomType" name="roomType" placeholder="N/A">
+            </div>
+
+            <p>Accomodation and Hotel only</p>
+            <label for="location">Location:</label>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018822.8807606136!2d-3.435600506942407!3d8.784804935881029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfd75acda8dad6c7%3A0x54d7f230d093d236!2sGhana!5e0!3m2!1sen!2sgh!4v1695983391807!5m2!1sen!2sgh?key=process.env.GOOGLE_API_KEY&q=location" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <input type="text" id="location" name="location" required placeholder="N/A">
+
+            <p>All categories(Price per day for car rentals)</p>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required placeholder="N/A">
+
+             <!-- Flight Fields -->
+             <p>Flight only</p>
+             <div id="flight-fields" >
+                <label for="cityOfDeparture">City of Departure:</label>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018822.8807606136!2d-3.435600506942407!3d8.784804935881029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfd75acda8dad6c7%3A0x54d7f230d093d236!2sGhana!5e0!3m2!1sen!2sgh!4v1695983391807!5m2!1sen!2sgh?key=process.env.GOOGLE_API_KEY&q=City of Departure" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <input type="text" id="cityOfDeparture" name="cityOfDeparture" placeholder="N/A">
+                
+                
+                <label for="cityOfDestination">City of Destination:</label>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2018822.8807606136!2d-3.435600506942407!3d8.784804935881029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfd75acda8dad6c7%3A0x54d7f230d093d236!2sGhana!5e0!3m2!1sen!2sgh!4v1695983391807!5m2!1sen!2sgh?key=process.env.GOOGLE_API_KEY&q=City of Destination" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <input type="text" id="cityOfDestination" name="cityOfDestination" placeholder="N/A">
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+
+            <!-- Car Rental Fields -->
+            <p>Car rentals only</p>
+            <div id="carRental-fields" style="display: none;">
+                <label for="carType">Car Type:</label>
+                <input type="text" id="carType" name="carType" placeholder="N/A">
+            </div>
+           
+            <p>All categories</p>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
 
             <button type="submit" class="submit-button">Create Offer</button>
         </form>
     </div>
 
-    
+   
 </body>
 </html>
