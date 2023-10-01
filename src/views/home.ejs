@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Booking Home</title>
-    <link rel="stylesheet" href="/public/">
+    <link rel="stylesheet" href="/public/home.css">
 </head>
 <body>
-    
+    <div>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/register"><button>Register (Business)</button></a>
+                <a href="/login"><button>Login (Business)</button></a>
+                <div>Cart[0]</div>
+            </div>
+            <div class="navbar-right">
+                <input type="text" placeholder="Search">
+                <button>Search</button>
+            </div>
+        </nav>
+    </div>
+
+    <p>Hello, welcome to the Travel Booking Commerce</p>
+
+   <div class="container">
+        <h1>Category Items</h1>
+        <div class="category-filter">
+            <label for="category">Select a Category:</label>
+            <select id="category" name="category">
+                <option value="all">All</option>
+                <option value="accommodation">Accommodation</option>
+                <option value="hotel">Hotel</option>
+                <option value="flight">Flight</option>
+                <option value="car_rental">Car Rental</option>
+            </select>
+        </div>
+
+        <% const categoryMappings = {
+            '001': 'Accommodation',
+            '002': 'Hotel',
+            '003': 'Flight',
+            '004': 'Car Rental',
+        }; %>
+
+
+        <div class="category-items">
+            <% for (let i = 0; i < categories.length; i++) { %>
+                <div class="category-item">
+                    <h2><%= categoryMappings[categories[i].code] %></h2>
+                    <p><strong>Code:</strong> <%= categories[i].code %></p>
+                    <% if (categories[i].accommodationType && categories[i].accommodationType.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Accommodation Type:</strong> <%= categories[i].accommodationType %></p>
+                    <% } %>
+                    <% if (categories[i].name && categories[i].name.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Name:</strong> <%= categories[i].name %></p>
+                    <% } %>
+                    <% if (categories[i].location && categories[i].location.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Location:</strong> <%= categories[i].location %></p>
+                    <% } %>
+                    <% if (categories[i].accommodationCapacity && categories[i].accommodationCapacity.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Accommodation Capacity:</strong> <%= categories[i].accommodationCapacity %></p>
+                    <% } %>
+                    <% if (categories[i].price) { %>
+                        <p><strong>Price:</strong> $<%= categories[i].price %></p>
+                    <% } %>
+                    <% if (categories[i].roomType && categories[i].roomType.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Room Type:</strong> <%= categories[i].roomType %></p>
+                    <% } %>
+                    <% if (categories[i].cityOfDepature && categories[i].cityOfDepature.toLowerCase() !== 'n/a') { %>
+                        <p><strong>City of Departure:</strong> <%= categories[i].cityOfDepature %></p>
+                    <% } %>
+                    <% if (categories[i].cityOfDestination && categories[i].cityOfDestination.toLowerCase() !== 'n/a') { %>
+                        <p><strong>City of Destination:</strong> <%= categories[i].cityOfDestination %></p>
+                    <% } %>
+               
+                    <% if (categories[i].carType && categories[i].carType.toLowerCase() !== 'n/a') { %>
+                        <p><strong>Car Type:</strong> <%= categories[i].carType %></p>
+                    <% } %>
+                    <img src="<%= categories[i].image %>" alt="<%= categories[i].name %> Image">
+                    <button id="cart" type="submit">Add to cart</button>
+                </div>
+            <% } %>
+        </div>
+        
+    </div>
+   
 </body>
 </html>

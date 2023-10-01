@@ -27,7 +27,7 @@ export const authenticateUser = async (request: Request, response: Response) => 
     }
 
     // return response.json({ message: 'Login successful.' });
-    response.render('main-page');
+    response.render('create-category');
   } catch (error) {
     console.error(error);
     response.status(500).json({ error: 'Login failed.' });

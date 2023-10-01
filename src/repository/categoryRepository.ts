@@ -25,6 +25,16 @@ export class CategoryRepository extends Repository<Category> {
       throw error;
     }
   }
+
+  async findCategories(): Promise<Category[]> {
+    try {
+      return await this.find(); // Find all categories
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 }
 
 
@@ -45,47 +55,3 @@ export class CategoryRepository extends Repository<Category> {
 
 
 
-// @EntityRepository(Category)
-// export class CategoryRepository extends Repository<Category> {
-//   static save(newBookingCategory: Category) {
-//       throw new Error("Method not implemented.");
-//   }
-//   async createCategory(
-//     name: string,
-//     code: string,
-//     categoryID: number,
-//     accommodationType: string,
-//     accommodationCapacity: string,
-//     roomType: string,
-//     location: string,
-//     price: number,
-//     cityOfDeparture: string,
-//     cityOfDestination: string,
-//     date: Date,
-//     carType: string,
-//     // Add other parameters based on your entity properties
-//   ): Promise<Category> {
-//     const category = new Category();
-//     category.name = name;
-//     category.code = code;
-//     category.categoryID = categoryID;
-//     category.accommodationCapacity = accommodationCapacity;
-//     category.accommodationType = accommodationType;
-//     category.roomType = roomType;
-//     category.location = location;
-//     category.price = price;
-//     category.cityOfDepature = cityOfDeparture;
-//     category.cityOfDestination = cityOfDestination;
-//     category.date = date;
-//     category.carType = carType;
-    
-//     await category.save();
-//     return category;
-//   }
-
-// //   async findCategoryById(id: number): Promise<Category | undefined> {
-// //     return await this.findOne(id);
-// //   }
-
-//   // Add more custom repository methods as needed
-// }

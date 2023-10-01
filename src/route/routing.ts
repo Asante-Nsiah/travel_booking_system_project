@@ -5,6 +5,7 @@ import { verification } from '../controller/userVerification';
 import { authenticateUser } from '../controller/authenticateUser';
 import { setNewPassword } from '../controller/resetPassword';
 import { bookCategory, category } from '../controller/category';
+import { categoryHome } from '../controller/categoryHome';
 
 const router = express.Router();
 
@@ -17,8 +18,9 @@ router.post('/login', authenticateUser)
 router.get('/main', isAuthenticated, mainPage )
 router.get('/reset-password', resetPassword)
 router.post('/reset-password', setNewPassword)
-router.get('/create-category', category)
+router.get('/create-category',isAuthenticated, category)
 router.post('/create-booking-offer', bookCategory)
+router.get('/home', categoryHome)
 
 
 

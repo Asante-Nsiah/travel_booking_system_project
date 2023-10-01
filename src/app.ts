@@ -62,7 +62,7 @@ const setupExpress = () => {
     app.route("/reset-password").post(Controller);
     app.route("/create-category").get(Controller);
     app.route("/create-booking-offer").post(Controller);
-    
+    app.route("/home").get(Controller);
     }
 
     const startServer = () => {
