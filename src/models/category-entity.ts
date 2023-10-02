@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn } from 'typeorm';
 import { BookingOffer } from './booking-offer-entitiy';
 
 @Entity('categories')
@@ -45,6 +45,9 @@ export class Category {
   @Column({ type: 'varchar', length: 255 })
   image: string;
 
+  @CreateDateColumn()
+  createdAt: Date;
+
   @OneToMany(() => BookingOffer, (bookingOffer) => bookingOffer.category)
   bookingOffers!: BookingOffer[];
 
@@ -62,6 +65,7 @@ export class Category {
     this.date = new Date();
     this.carType = '';
     this.price = 0;
+    this.createdAt = new Date();
 
   }
 }

@@ -34,7 +34,13 @@ export class CategoryRepository extends Repository<Category> {
     }
   }
 
-
+  async findCategoriesInDescendingOrder(): Promise<Category[]> {
+    return this.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
 }
 
 

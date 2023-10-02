@@ -6,7 +6,7 @@ import { CartItem } from './cart-item-entity';
   @Entity('booking_offers')
   export class BookingOffer {
     @PrimaryGeneratedColumn()
-    offerID: number;
+    offerID!: number;
   
     @ManyToOne(() => Category, (category) => category.bookingOffers)
     category: Category;
@@ -23,7 +23,7 @@ import { CartItem } from './cart-item-entity';
     cartItems!: CartItem[];
 
     constructor(){
-        this.offerID = 0;
+       
         this.category = new Category();
         this.businessUser = new Users();
         this.name = '';

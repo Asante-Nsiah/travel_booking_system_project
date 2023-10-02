@@ -63,6 +63,8 @@ const setupExpress = () => {
     app.route("/create-category").get(Controller);
     app.route("/create-booking-offer").post(Controller);
     app.route("/home").get(Controller);
+    app.route("/add-to-cart").get(Controller);
+    app.route("/add-to-cart").post(Controller);
     }
 
     const startServer = () => {

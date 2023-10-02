@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="/public/cart.css">
+</head>
+<body>
+   
+
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="cart-items">
+            <% if (categories && categories.length > 0) { %>
+                <% for (let i = 0; i < categories.length; i++) { %>
+                    <% const cartItem = categories[i].c; %>
+                    <% if (cartItem) { %>
+                        <div class="cart-item">
+                            <h2><%= cartItem.code %></h2>
+                            <p><strong>Price:</strong> $<%= cartItem.price %></p>
+                            <p><strong>Quantity:</strong> <%= cartItem.quantity %></p>
+                            <button onclick="removeFromCart('<%= cartItem.cartItemID %>')">Remove</button>
+                        </div>
+                    <% } %>
+                <% } %>
+            <% } else { %>
+                <p>Your cart is empty.</p>
+            <% } %>
+        </div>
+        
+        <a href="/home">Continue Shopping</a>
+    </div>
+</body>
+</html>

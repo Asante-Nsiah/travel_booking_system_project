@@ -7,9 +7,11 @@ const connection = AppDataSource;
 
 export const categoryHome = async (request: Request, response: Response) => {
     try {
+        const {guestCartId, bookingOfferId} = request.body
+
         const categoriesData = connection.getRepository(Category);
         const categories = await categoriesData.find()
-        response.render('home', { categories });
+        response.render('home', { categories, guestCartId, bookingOfferId});
       } catch (error) {
         console.error('Error retrieving categories:', error);
         response.status(500).send('An error occurred.');

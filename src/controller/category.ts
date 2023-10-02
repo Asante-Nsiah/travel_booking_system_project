@@ -61,6 +61,12 @@ export const bookCategory = async (request: Request, response: Response) =>{
     
         // Save the entity to the database using the repository
         await categoryRepository.save(newBookingCategory);
+
+        const categories = await categoryRepository.find({
+            order: {
+              createdAt: 'DESC', 
+            },
+          });
     
         // Redirect to a success page or respond with a success message
         response.status(201).json({ message: 'Category booking successful.' });

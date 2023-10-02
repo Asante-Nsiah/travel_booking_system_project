@@ -9,7 +9,7 @@ body {
   }
   
   .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff; /* White container background */
@@ -38,8 +38,8 @@ body {
   }
   
   .category-items {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
   }
   

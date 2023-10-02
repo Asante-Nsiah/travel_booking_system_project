@@ -13,7 +13,7 @@ export class CartItem {
   @ManyToOne(() => BookingOffer, (bookingOffer) => bookingOffer.cartItems)
   offer: BookingOffer;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: 0 })
   quantity: number;
 
   constructor(){
