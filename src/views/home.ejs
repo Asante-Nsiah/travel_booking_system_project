@@ -13,9 +13,7 @@
                 <a href="/register"><button>Register (Business)</button></a>
                 <a href="/login"><button>Login (Business)</button></a>
                 <a href="/add-to-cart"><button>Cart[0]</button></a>
-                <form action="/logout" method="post">
-                    <li><button type="submit" class="logout-button">Logout</button></li>
-                </form>
+                
             </div>
             <div class="navbar-right">
                 <input type="text" placeholder="Search">
@@ -81,11 +79,11 @@
                         <p><strong>Car Type:</strong> <%= categories[i].carType %></p>
                     <% } %>
                     <img src="<%= categories[i].image %>" alt="<%= categories[i].name %> Image">
-                    <form method="post" action="/add-to-cart">
-                        <input type="hidden" name="cartItemID" value="<%= categories[i].cartItemID %>">
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit">Add to Cart</button>
-                    </form>
+                     <form method="post" action="/add-to-cart">
+                <input type="hidden" name="cartItemID" value="<%= categories[i].cartItemID %>">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit">Add to Cart</button>
+            </form>
                 </div>
             <% } %>
         </div>

@@ -9,6 +9,7 @@ import { GuestCart } from "../models/guest-entity";
 
 
 
+
 const connection = AppDataSource;
 const userRepository = connection.getRepository(Users);
 
@@ -34,7 +35,7 @@ function validatePassword(password: string): boolean {
     return uuidv4(); // Generate a random UUID
   }
   
-
+  const sessionId: string = uuidv4();
 
 
 export const registration =  async (request: Request, response: Response) => {
@@ -67,7 +68,8 @@ export const registration =  async (request: Request, response: Response) => {
       user.email = email;
       user.password = hashedPassword;
       user.verificationToken = verificationToken;
-
+      user.sessionId = sessionId;
+      
       await userRepository.insert(user);
 
      

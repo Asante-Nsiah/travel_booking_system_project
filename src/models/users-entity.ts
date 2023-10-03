@@ -30,6 +30,9 @@ import { SavedCard } from './saved-card-entity';
     @Column({ type: 'varchar', length: 255, nullable: true })
     FacebookAuthID: string | null;
 
+    @Column({ type: 'varchar', length: 255, unique: true, nullable: true })
+    sessionId: string | null;
+
     @Column({ type: 'varchar', length: 255, nullable: true })
     verificationToken: string | null;
   
@@ -44,7 +47,8 @@ import { SavedCard } from './saved-card-entity';
   
     @OneToOne(() => GuestCart, (guestCart) => guestCart.user, { cascade: true })
     @JoinColumn()
-    GuestCart: GuestCart | null;;
+    GuestCart: GuestCart | null;id: any;
+;
 
     constructor() {
         this.userID = 0; 
@@ -57,5 +61,6 @@ import { SavedCard } from './saved-card-entity';
         this.FacebookAuthID = null;
         this.verificationToken = null;
         this.GuestCart = null;
+        this.sessionId = '';
       }
   }

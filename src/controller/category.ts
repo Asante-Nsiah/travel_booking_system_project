@@ -28,6 +28,7 @@ type CategoryToCode = {
 
 
 export const bookCategory = async (request: Request, response: Response) =>{
+
     try {
         const selectedCategory: keyof CategoryToCode = request.body.category as keyof CategoryToCode;
     

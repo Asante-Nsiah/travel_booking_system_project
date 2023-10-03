@@ -8,6 +8,18 @@
    
 </head>
 <body>
+    <div>
+        <nav>
+            <% if (isAuthenticated) { %>
+                <span><%= email %></span>
+              <% } %>
+            <a href="#"><button>Dashboard</button></a>
+            <a href="/reset-password"><button>Reset password</button></a>
+            <form action="/logout" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </nav>
+    </div>
     <div class="container">
         <h1>Create Booking Offer</h1>
         <form action="/create-booking-offer" method="POST">

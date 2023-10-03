@@ -33,5 +33,22 @@ export class UserRepository extends Repository<Users> {
     const user = await this.findOne({ where: { verificationToken } });
     return user || null;
   }
+
+  // Method to get user email and full name by email
+  async getUserInfoByEmail(email: string): Promise<{ email: string; fullName: string } | null> {
+    const user = await this.findOne({
+      select: ['email', 'fullName'], // Select the email and full name columns
+      where: { email },
+    });
+
+    if (user) {
+      // Extract the email and full name from the user entity
+      const { email, fullName } = user;
+      return { email, fullName };
+    }
+
+    return null;
+  }
+
  
 }

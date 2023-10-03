@@ -7,6 +7,7 @@ import { setNewPassword } from '../controller/resetPassword';
 import { bookCategory, category } from '../controller/category';
 import { categoryHome } from '../controller/categoryHome';
 import { addCart, addCartDisplay } from '../controller/addToCart';
+import { sessionValidation } from '../middleware/sessionValidate';
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.get('/verify/:token', verification)
 router.post('/logout', logout)
 router.post('/login', authenticateUser)
 router.get('/main', isAuthenticated, mainPage )
-router.get('/reset-password', resetPassword)
+router.get('/reset-password',isAuthenticated, sessionValidation ,resetPassword)
 router.post('/reset-password', setNewPassword)
 router.get('/create-category',isAuthenticated, category)
 router.post('/create-booking-offer', bookCategory)

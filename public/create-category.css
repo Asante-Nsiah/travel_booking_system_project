@@ -56,6 +56,18 @@ select {
     background-color: #006400; /* Darker green on hover */
 }
 
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #006400; 
+    gap: 50px;
+    border: 0px;
+    margin-bottom: 50px;
+    padding: 20px;
+    color: white;
+}
+
 /* Hide and show category-specific fields */
 /* #accommodation-fields,
 #hotel-fields,

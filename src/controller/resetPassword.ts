@@ -7,13 +7,14 @@ import { Users } from "../models/users-entity";
 
 export const setNewPassword = async (request: Request, response: Response) =>{
     try {
-        const { email, oldPassword, newPassword, confirmPassword } = request.body;
+        const { email, oldPassword, newPassword, confirmPassword, fullName } = request.body;
     
         // Check if newPassword matches confirmPassword
         if (newPassword !== confirmPassword) {
           return response.status(400).json({ error: 'New password and confirm password do not match.' });
         }
-    
+        
+
         // Query the database to find the user by email
         const userRepository = AppDataSource.getRepository(Users);;
         const user = await userRepository.findOne({ where: { email } });

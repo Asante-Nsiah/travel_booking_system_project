@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
-    "@types/express-session": "^1.17.7",
+    "@types/express-session": "^1.17.8",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/passport": "^1.0.12",
     "@types/passport-local": "^1.0.35",
