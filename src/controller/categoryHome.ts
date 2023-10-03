@@ -10,19 +10,18 @@ const userRepository = connection.getRepository(Users);
 
 export const categoryHome = async (request: Request, response: Response) => {
     try {
-        const {fullName, email} = request.session;
+          
+        const {guestCartId, bookingOfferId, email} = request.body
         
-        const guestCartId = request.body;
-        const bookingOfferId = request.body;
 
         const categoriesData = connection.getRepository(Category);
         const categories = await categoriesData.find()
 
        
-        
+      
       
 
-        response.render('home', { categories, guestCartId, bookingOfferId, email, fullName});
+        response.render('home', { categories, guestCartId, bookingOfferId, email});
       } catch (error) {
         console.error('Error retrieving categories:', error);
         response.status(500).send('An error occurred.');
